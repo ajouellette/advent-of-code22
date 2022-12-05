@@ -14,6 +14,12 @@ def score(round):
     return total
 
 
+def get_move(opponent, outcome):
+    self_moves = "XYZ"
+    other_moves = "ABC"
+    return self_moves[(other_moves.index(opponent) + self_moves.index(outcome) + 2) % 3]
+
+
 def part1(input_txt):
     total = 0
     for round in input_txt.splitlines():
@@ -22,7 +28,12 @@ def part1(input_txt):
 
 
 def part2(input_txt):
-   return
+    total = 0
+    for round in input_txt.splitlines():
+        opponent, outcome = round.split()
+        self = get_move(opponent, outcome)
+        total += score(opponent + ' ' + self)
+    return total
 
 
 def main():
