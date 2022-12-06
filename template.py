@@ -6,16 +6,21 @@ def part1(input_txt):
 
 
 def part2(input_txt):
-   return
+    return
 
 
 def main():
-    if len(sys.argv) > 1:
-        file = sys.argv[1]
+    test = "test" in sys.argv
+    if test:
+        with open("input_test") as f:
+            answers = list(map(int, f.readline().split()))
+            input_txt = f.read()
     else:
-        file = "input"
-    with open(file) as f:
-        input_txt = f.read()
+        with open("input") as f:
+            input_txt = f.read()
+
+    if test:
+        print("Correct answers:", answers)
 
     print(part1(input_txt))
     print(part2(input_txt))
